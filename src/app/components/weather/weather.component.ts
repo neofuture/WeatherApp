@@ -23,7 +23,7 @@ export class WeatherComponent implements OnInit {
       q: 'London',
       apppid: environment.apiKey
     };
-    this.apiService.call(environment.weatherApi, 'get', requestParameters).subscribe((data: any) => {
+    this.apiService.call(environment.weatherApi, 'post', requestParameters).subscribe((data: any) => {
       this.data = data;
     });
   }
