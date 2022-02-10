@@ -21,8 +21,14 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.error('Intercepted Error', error);
-        return throwError(error);
+        /* here we can add more error status, and handle conditions */
+        if (error.status === 500 || error.status === 405 || error.status === 403) {
+          /* Handle error internally */
+          alert('Error ' + error.status);
+          return throwError(error);
+        } else {
+          return [{status: error.status}];
+        }
     }));
   }
 }
