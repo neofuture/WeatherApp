@@ -48,7 +48,7 @@ export class WeatherComponent implements OnInit {
           console.log(weatherData);
 
           this.locationWeatherData[location] = {
-            temperature: weatherData.current.temp,
+            temperature: parseInt(weatherData.current.temp, 10),
             main: weatherData.current.weather[0].main,
             humidity: weatherData.current.humidity,
             chanceOfRain: weatherData.minutely[0].precipitation,
