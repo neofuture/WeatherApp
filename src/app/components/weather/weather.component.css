@@ -1,0 +1,94 @@
+.tempChart{
+  width:calc(100% - 18px);
+  height:200px;
+  display: block;
+  border-radius:8px;
+  border:1px solid #777777;
+  overflow:hidden;
+  margin: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  position:relative;
+}
+
+heading {
+  background: linear-gradient(90deg, rgba(255,255,255,1) 180px, rgba(2,0,36,0) 100%);
+  display:block;
+  position:relative;
+  top:0;
+  height:48px;
+
+}
+
+.headingText {
+  font-weight:200;
+  color: #444;
+  margin: 0px;
+  padding:3px 3px 3px 8px;
+  font-size:32px;
+  float:left;
+}
+
+.London{
+  background: url('/assets/images/locations/London.jpg') no-repeat center;
+  background-size: cover;
+}
+.Paris{
+  background: url('/assets/images/locations/Paris.jpg') no-repeat center;
+  background-size: cover;
+}
+.NewYork{
+  background: url('/assets/images/locations/New York.jpg') no-repeat center;
+  background-size: cover;
+}
+.LosAngeles{
+  background: url('/assets/images/locations/Los Angeles.jpg') no-repeat center;
+  background-size: cover;
+}
+.Tokyo{
+  background: url('/assets/images/locations/Tokyo.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.weatherIcon {
+  width:48px;
+  height:48px;
+  float:left;
+}
+
+.content {
+  display:block;
+  height:122px;
+  margin:12px;
+  background-color:rgba(255,255,255,0.7);
+  border-radius:8px;
+  padding:12px;
+  backdrop-filter: blur(5px);
+}
+
+@media only screen and (min-width: 940px) {
+  .tempChart{
+    width:calc(50% - 18px);
+    height:200px;
+    display: inline-block;
+    color:green;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .tempChart{
+    width:calc(33% - 12px);
+    height:200px;
+    display: inline-block;
+    color:red;
+  }
+}
+
+@media only screen and (min-width: 1640px) {
+  .tempChart{
+    width:calc(20% - 16px);
+    height:200px;
+    display: inline-block;
+    color:red;
+  }
+}
+
