@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {environment} from '../../../environments/environment';
 import {icons} from '../../data/icons';
 import {locations} from '../../data/locations';
+
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
@@ -26,6 +27,9 @@ export class WeatherComponent implements OnInit {
       this.locationCSS[location] = location.replace(/\s/g, '');
     }
     this.getWeatherLocations();
+    setInterval(() => {
+      this.getWeatherLocations();
+    }, 60000);
   }
 
   getWeatherLocations(): void {
