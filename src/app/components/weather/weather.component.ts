@@ -44,8 +44,6 @@ export class WeatherComponent implements OnInit {
           exclude: 'hourly,daily'
         };
         this.apiService.call(environment.weatherApi + '/onecall', 'get', requestWeatherParameters).subscribe((weatherData: any) => {
-          console.log(weatherData);
-
           this.locationWeatherData[location] = {
             temperature: parseInt(weatherData.current.temp, 10),
             main: weatherData.current.weather[0].main,
