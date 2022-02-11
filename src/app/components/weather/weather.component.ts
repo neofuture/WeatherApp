@@ -42,14 +42,22 @@ export class WeatherComponent implements OnInit {
           lat: locationData.coord.lat,
           appid: environment.apiKey,
           units: 'metric',
-          exclude: 'hourly,daily'
+          // exclude: 'hourly,daily'
         };
         this.apiService.call(environment.weatherApi + '/onecall', 'get', requestWeatherParameters).subscribe((weatherData: any) => {
+
+          let basePop = 0;
+          for (const pop of weatherData.hourly) {
+            if (pop.pop > basePop) {
+              basePop = pop.pop;
+            }
+          }
+
           this.locationWeatherData[location] = {
             temperature: parseInt(weatherData.current.temp, 10),
             main: weatherData.current.weather[0].main,
             humidity: weatherData.current.humidity,
-            chanceOfRain: weatherData.minutely[0].precipitation,
+            chanceOfRain: parseInt(String(basePop * 100), 10),
             description: this.capitalizeFirstLetter(weatherData.current.weather[0].description),
             icon: weatherData.current.weather[0].icon
           };
