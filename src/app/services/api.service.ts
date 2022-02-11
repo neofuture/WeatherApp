@@ -53,7 +53,7 @@ export class ApiService {
   be taken in the UI
    */
   handleError(error): any {
-    if (error.status === 500 || error.status === 401 || error.status === 405 || error.status === 403) {
+    if (error.status === 500 || error.status === 401 || error.status === 405 || error.status === 403 || error.status === 429) {
       alert('Error calling the API\n\nError: ' + error.statusText);
       return throwError(error);
     } else {

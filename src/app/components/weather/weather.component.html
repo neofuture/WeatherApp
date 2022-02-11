@@ -6,7 +6,7 @@
   <heading>
     <div class="headingText" [innerHTML]="location"></div>
     <div class="weatherIcon">
-      <img src="assets/images/icons/{{ locationWeatherData[location].icon }}.png" class="weatherIcon">
+      <img src="assets/images/icons/{{ locationWeatherData[location].icon }}.png" class="weatherIcon" [alt]="locationWeatherData[location].main" title="locationWeatherData[location].main + ' - ' + locationWeatherData[location].description">
     </div>
     <div class="description" [innerHTML]="locationWeatherData[location].main"></div>
   </heading>

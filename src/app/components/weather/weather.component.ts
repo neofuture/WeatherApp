@@ -27,9 +27,6 @@ export class WeatherComponent implements OnInit {
       this.locationCSS[location] = location.replace(/\s/g, '');
     }
     this.getWeatherLocations();
-    setInterval(() => {
-      this.getWeatherLocations();
-    }, 60000);
   }
 
   getWeatherLocations(): void {
