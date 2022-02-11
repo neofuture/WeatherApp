@@ -63,7 +63,10 @@ h1 {
   background: url('/assets/images/locations/Florida.jpg') no-repeat center;
   background-size: cover;
 }
-
+.Auckland{
+  background: url('/assets/images/locations/Auckland.jpg') no-repeat center;
+  background-size: cover;
+}
 .main {
   position:relative;
 }
@@ -85,7 +88,7 @@ h1 {
 }
 
 .description {
-  padding-top:16px;
+  padding-top:15px;
 }
 
 @media only screen and (min-width: 800px) {
