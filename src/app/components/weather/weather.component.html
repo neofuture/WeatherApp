@@ -1,22 +1,21 @@
-<!--<p>weather works!</p>-->
-
-<!--<button (click)="getWeatherLocations()">Get Locations</button>-->
-<!--<pre>{{ locationData | json }}</pre>-->
-
+<h1>
+  Weather App
+</h1>
 <div *ngFor="let location of locations" [class]="locationCSS[location]" class="tempChart">
-  <ng-container *ngIf="locationWeatherData[location]; else loading">
+  <ng-container *ngIf="locationWeatherData[location]">
   <heading>
     <div class="headingText">{{ location }}</div>
     <div class="weatherIcon">
-      <img src="assets/images/icons/11d.png" class="weatherIcon">
+      <img src="assets/images/icons/{{ locationWeatherData[location].icon }}.png" class="weatherIcon">
     </div>
+    <div class="description">{{ locationWeatherData[location].main }}</div>
   </heading>
   <div class="content">
-    abcd
+    <div>{{ locationWeatherData[location].main }} - {{ locationWeatherData[location].description }}</div>
+    <hr>
+    <div><b>Temperature:</b> {{ locationWeatherData[location].temperature }}</div>
+    <div><b>Humidity:</b> {{ locationWeatherData[location].humidity }}</div>
+    <div><b>Chance of Rain:</b> {{ locationWeatherData[location].chanceOfRain }}%</div>
   </div>
   </ng-container>
 </div>
-
-<ng-template #loading>
-  <div>Loading</div>
-</ng-template>

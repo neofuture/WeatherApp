@@ -1,16 +1,27 @@
+h1 {
+  font-weight: 400;
+}
+
 .tempChart{
   width:calc(100% - 18px);
-  height:200px;
+  height:190px;
   display: block;
   border-radius:8px;
-  border:1px solid #777777;
+  border:1px solid #aaaaaa;
   overflow:hidden;
   margin: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   position:relative;
+  transition: box-shadow .6s ease-in-out, transform .3s ease-in-out;
 }
 
-heading {
+.tempChart:hover {
+  transform: scale(1.09);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  z-index:9999;
+}
+
+ heading {
   background: linear-gradient(90deg, rgba(255,255,255,1) 180px, rgba(2,0,36,0) 100%);
   display:block;
   position:relative;
@@ -57,7 +68,7 @@ heading {
 
 .content {
   display:block;
-  height:122px;
+  height:112px;
   margin:12px;
   background-color:rgba(255,255,255,0.7);
   border-radius:8px;
@@ -65,30 +76,31 @@ heading {
   backdrop-filter: blur(5px);
 }
 
-@media only screen and (min-width: 940px) {
+.description {
+  padding-top:16px;
+}
+
+@media only screen and (min-width: 800px) {
   .tempChart{
     width:calc(50% - 18px);
-    height:200px;
+    height:190px;
     display: inline-block;
-    color:green;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .tempChart{
-    width:calc(33% - 12px);
-    height:200px;
+    width:calc(33% - 14px);
+    height:190px;
     display: inline-block;
-    color:red;
   }
 }
 
 @media only screen and (min-width: 1640px) {
   .tempChart{
-    width:calc(20% - 16px);
-    height:200px;
+    width:calc(20% - 18px);
+    height:190px;
     display: inline-block;
-    color:red;
   }
 }
 

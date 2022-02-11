@@ -22,7 +22,7 @@ export class ApiService {
     let data;
     if (requestType === 'get' || requestType === 'delete') {
       const params = new URLSearchParams(body).toString();
-      data = this.http[requestType](url + (params ? '/?' + params : ''), httpOptions);
+      data = this.http[requestType](url + (params ? '?' + params : ''), httpOptions);
     } else {
       data = this.http[requestType](url, body, httpOptions);
     }
@@ -39,7 +39,7 @@ export class ApiService {
   headers(): any {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/json'
       })
     };
     return httpOptions;
