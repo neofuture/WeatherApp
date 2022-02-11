@@ -59,6 +59,10 @@ h1 {
   background: url('/assets/images/locations/Tokyo.jpg') no-repeat center;
   background-size: cover;
 }
+.Florida{
+  background: url('/assets/images/locations/Florida.jpg') no-repeat center;
+  background-size: cover;
+}
 
 .main {
   position:relative;
