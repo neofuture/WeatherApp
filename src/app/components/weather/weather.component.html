@@ -11,7 +11,9 @@
     <div class="description">{{ locationWeatherData[location].main }}</div>
   </heading>
   <div class="content">
-    <div>{{ locationWeatherData[location].main }} - {{ locationWeatherData[location].description }}</div>
+    <div class="main">
+      {{ locationWeatherData[location].main }} - {{ locationWeatherData[location].description }}
+    </div>
     <hr>
     <div><b>Temperature:</b> {{ locationWeatherData[location].temperature }}&#176;C</div>
     <div><b>Humidity:</b> {{ locationWeatherData[location].humidity }}%rh</div>

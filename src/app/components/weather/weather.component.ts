@@ -3,7 +3,6 @@ import {ApiService} from '../../services/api.service';
 import {environment} from '../../../environments/environment';
 import {icons} from '../../data/icons';
 import {locations} from '../../data/locations';
-import {WeatherData} from '../../models/weather-data.class';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',

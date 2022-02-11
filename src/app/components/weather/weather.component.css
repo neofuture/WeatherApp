@@ -60,6 +60,10 @@ h1 {
   background-size: cover;
 }
 
+.main {
+  position:relative;
+}
+
 .weatherIcon {
   width:48px;
   height:48px;
