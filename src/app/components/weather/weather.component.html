@@ -22,12 +22,12 @@
       <div class="content">
         <!-- Show the required data for this location-->
         <div class="main"
-             [innerHTML]="locationWeatherData[location].main + ' - ' + locationWeatherData[location].description">
+             [innerHTML]="locationWeatherData[location].description">
         </div>
         <hr>
-        <div [innerHTML]="'<b>Temperature:</b> ' + locationWeatherData[location].temperature + '&#176;C'"></div>
-        <div [innerHTML]="'<b>Humidity:</b> ' + locationWeatherData[location].humidity + '%rh'"></div>
-        <div [innerHTML]="'<b>Chance of Rain:</b> ' + locationWeatherData[location].chanceOfRain + '%'"></div>
+        <div [innerHTML]="'Temperature - ' + locationWeatherData[location].temperature + '&#176;C'"></div>
+        <div [innerHTML]="'Humidity - ' + locationWeatherData[location].humidity + '%rh'"></div>
+        <div [innerHTML]="'Chance of Rain - ' + locationWeatherData[location].chanceOfRain + '%'"></div>
       </div>
     </ng-container>
   </div>

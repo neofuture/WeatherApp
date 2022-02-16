@@ -43,7 +43,6 @@ heading {
 
 .rightAlign {
   float: right;
-  padding-right: 12px;
 }
 
 .London {
@@ -83,6 +82,7 @@ heading {
 
 .main {
   position: relative;
+  font-size: 21px;
 }
 
 .weatherIcon {
@@ -93,7 +93,7 @@ heading {
 
 .content {
   display: block;
-  height: 120px;
+  height: 128px;
   margin: 32px;
   background-color: rgba(255, 255, 255, 0.4);
   padding: 12px;
@@ -128,7 +128,7 @@ h1 {
 
 b {
   font-family: "vm_circular_light";
-  font-weight: 200;
+  font-weight: 100;
 }
 
 @media only screen and (min-width: 800px) {
