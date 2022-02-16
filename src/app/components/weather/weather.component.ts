@@ -61,7 +61,11 @@ export class WeatherComponent implements OnInit {
             description: this.capitalizeFirstLetter(weatherData.current.weather[0].description),
             icon: weatherData.current.weather[0].icon
           };
+        }, (error) => {
+          alert('Whoops we hit an error calling onecall API');
         });
+      }, (error) => {
+        alert('Whoops we hit an error calling weather API');
       });
     }
   }
