@@ -1,7 +1,6 @@
 <h1>
   Weather App
 </h1>
-{{ this.locationWeatherData | json }}
 <!-- Create a loop for the available locations-->
 <div *ngFor="let location of locations" [class]="locationCSS[location]" class="tempChart">
   <!-- Do we have location data yet for this location, if now show the loading template-->
