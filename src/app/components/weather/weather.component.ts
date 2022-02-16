@@ -37,11 +37,15 @@ export class WeatherComponent implements OnInit {
       this.locationCSS[location] = location.replace(/\s/g, '');
     }
 
-    this.getWeatherLocations();
+    // this.getWeatherLocations();
     /*
     or execute promise version
      */
     // this.getWeatherLocationsPromise();
+    /*
+    or execute the multiple function version
+     */
+    this.getWeatherLocationsMultiFunction();
   }
 
   /*
@@ -150,6 +154,63 @@ export class WeatherComponent implements OnInit {
         console.error('Whoops we hit an error calling weather API', error);
       });
     }
+  }
+
+  /*
+  The next four functions are the same as above but are broken into individial function for
+  better readability and debugging
+   */
+  getWeatherLocationsMultiFunction(): void {
+    for (const location of this.locations) {
+      this.getLocationData(location);
+    }
+  }
+
+  getLocationData(location: string): void {
+    const requestLocationParameters: RequestLocationParameters = {
+      q: location,
+      appid: environment.apiKey,
+      units: 'metric'
+    };
+    this.apiService.call(environment.weatherApi + '/weather', 'get', requestLocationParameters).subscribe(
+      (locationData: any) => {
+        this.getWeatherData(location, locationData);
+      }, (error) => {
+        console.log('Whoops we hit an error calling weather API', error);
+      });
+  }
+
+  getWeatherData(location: string, locationData: any): void {
+    const requestWeatherParameters: RequestWeatherParameters = {
+      lon: locationData.coord.lon,
+      lat: locationData.coord.lat,
+      appid: environment.apiKey,
+      units: 'metric',
+    };
+    this.apiService.call(environment.weatherApi + '/onecall', 'get', requestWeatherParameters).subscribe(
+      (weatherData: any) => {
+        this.setLocationWeatherData(location, weatherData);
+      }, (error) => {
+        console.log('Whoops we hit an error calling onecall API', error);
+      });
+  }
+
+  setLocationWeatherData(location: string, weatherData: any): void {
+    let basePop = 0;
+    for (const pop of weatherData.hourly) {
+      if (pop.pop > basePop) {
+        basePop = pop.pop;
+      }
+    }
+
+    this.locationWeatherData[location] = {
+      temperature: parseInt(weatherData.current.temp, 10),
+      main: weatherData.current.weather[0].main,
+      humidity: weatherData.current.humidity,
+      chanceOfRain: parseInt(String(basePop * 100), 10),
+      description: this.capitalizeFirstLetter(weatherData.current.weather[0].description),
+      icon: weatherData.current.weather[0].icon
+    };
   }
 
   capitalizeFirstLetter(str: string): string {
