@@ -1,122 +1,281 @@
-h1 {
-  font-weight: 400;
+.container {
+  text-align: center;
+  margin: 24px;
 }
 
-.tempChart{
-  width:calc(100% - 18px);
-  height:190px;
+.tempChart {
+  width: calc(100% - 18px);
+  height: 236px;
   display: block;
-  border-radius:8px;
-  border:1px solid #aaaaaa;
-  overflow:hidden;
+  overflow: hidden;
   margin: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  position:relative;
+  position: relative;
   transition: box-shadow .6s ease-in-out, transform .3s ease-in-out;
+  text-align: left;
 }
 
 .tempChart:hover {
   transform: scale(1.09);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  z-index:9999;
+  z-index: 9999;
 }
 
- heading {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 180px, rgba(2,0,36,0) 100%);
-  display:block;
-  position:relative;
-  top:0;
-  height:48px;
+heading {
+  background-color: rgb(50, 35, 50);
+  font-color: white;
+  display: block;
+  position: relative;
+  top: 0;
+  height: 48px;
 
 }
 
 .headingText {
-  font-weight:200;
-  color: #444;
+  font-weight: 200;
+  font-family: "vm_circular_light";
+  color: white;
   margin: 0px;
-  padding:3px 3px 3px 8px;
-  font-size:32px;
-  float:left;
+  padding: 5px 3px 3px 8px;
+  font-size: 28px;
+  float: left;
 }
 
-.London{
+.rightAlign {
+  float: right;
+  padding-right: 12px;
+}
+
+.London {
   background: url('/assets/images/locations/London.jpg') no-repeat center;
   background-size: cover;
 }
-.Paris{
+
+.Paris {
   background: url('/assets/images/locations/Paris.jpg') no-repeat center;
   background-size: cover;
 }
-.NewYork{
+
+.NewYork {
   background: url('/assets/images/locations/New York.jpg') no-repeat center;
   background-size: cover;
 }
-.LosAngeles{
+
+.LosAngeles {
   background: url('/assets/images/locations/Los Angeles.jpg') no-repeat center;
   background-size: cover;
 }
-.Tokyo{
+
+.Tokyo {
   background: url('/assets/images/locations/Tokyo.jpg') no-repeat center;
   background-size: cover;
 }
-.Florida{
+
+.Florida {
   background: url('/assets/images/locations/Florida.jpg') no-repeat center;
   background-size: cover;
 }
-.Auckland{
+
+.Auckland {
   background: url('/assets/images/locations/Auckland.jpg') no-repeat center;
   background-size: cover;
 }
+
 .main {
-  position:relative;
+  position: relative;
 }
 
 .weatherIcon {
-  width:48px;
-  height:48px;
-  float:left;
+  width: 48px;
+  height: 48px;
+  float: left;
 }
 
 .content {
-  display:block;
-  height:112px;
-  margin:12px;
-  background-color:rgba(255,255,255,0.7);
-  border-radius:8px;
-  padding:12px;
+  display: block;
+  height: 120px;
+  margin: 32px;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 12px;
   backdrop-filter: blur(5px);
 }
 
 .description {
-  padding-top:15px;
+  padding-top: 15px;
+  padding-left: 32px;
+  color: white;
+}
+
+.description:before {
+  content: '- ';
 }
 
 .loading {
-  text-align:center;
-  margin:30px 0 0 0;
+  text-align: center;
+  margin: 30px 0 0 0;
+}
+
+.logoContainer {
+  text-align: center;
+  background-color: rgb(50, 35, 50);
+  padding: 12px;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 400;
+}
+
+b {
+  font-family: "vm_circular_light";
+  font-weight: 200;
 }
 
 @media only screen and (min-width: 800px) {
-  .tempChart{
-    width:calc(50% - 18px);
-    height:190px;
+  .tempChart {
+    width: calc(50% - 18px);
+    height: 236px;
     display: inline-block;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .tempChart{
-    width:calc(33% - 14px);
-    height:190px;
+  .tempChart {
+    width: calc(33% - 14px);
+    height: 236px;
     display: inline-block;
   }
 }
 
 @media only screen and (min-width: 1640px) {
-  .tempChart{
-    width:calc(20% - 18px);
-    height:190px;
+  .tempChart {
+    width: calc(20% - 18px);
+    height: 236px;
     display: inline-block;
   }
 }
 
+
+loadingSpinner {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loadingSpinner div {
+  animation: loadingSpinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.loadingSpinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+}
+
+.loadingSpinner div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.loadingSpinner div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+
+.loadingSpinner div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.loadingSpinner div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+
+.loadingSpinner div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.loadingSpinner div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+
+.loadingSpinner div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.loadingSpinner div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+
+.loadingSpinner div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.loadingSpinner div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+
+.loadingSpinner div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.loadingSpinner div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+
+.loadingSpinner div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.loadingSpinner div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+
+.loadingSpinner div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.loadingSpinner div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+@keyframes loadingSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingContainer {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.loadingSpinner {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  transform: translate(-50%, -50%);
+}
+
+hr {
+  border-bottom:0;
+  border-color: rgba(50, 35, 50, 0.5);
+}

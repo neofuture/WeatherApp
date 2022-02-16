@@ -37,7 +37,7 @@ export class WeatherComponent implements OnInit {
       this.locationCSS[location] = location.replace(/\s/g, '');
     }
 
-    // this.getWeatherLocations();
+    this.getWeatherLocations();
     /*
     or execute promise version
      */
@@ -45,7 +45,7 @@ export class WeatherComponent implements OnInit {
     /*
     or execute the multiple function version
      */
-    this.getWeatherLocationsMultiFunction();
+    // this.getWeatherLocationsMultiFunction();
   }
 
   /*
