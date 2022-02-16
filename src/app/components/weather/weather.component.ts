@@ -3,6 +3,9 @@ import {ApiService} from '../../services/api.service';
 import {environment} from '../../../environments/environment';
 import {icons} from '../../data/icons';
 import {locations} from '../../data/locations';
+import {LocationWeatherData} from '../../models/location-weather-data.class';
+import {RequestWeatherParameters} from '../../models/request-weather-parameters.class';
+import {RequestLocationParameters} from '../../models/request-location-parameters.class';
 
 @Component({
   selector: 'app-weather',
@@ -10,11 +13,12 @@ import {locations} from '../../data/locations';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-
+  /*
+  Get the locations and the list of icons from a seperate data array/object
+   */
   icons = icons;
   locations = locations;
-  locationData: any;
-  locationWeatherData = {};
+  locationWeatherData: LocationWeatherData[] = [];
   locationCSS = {};
 
   constructor(
@@ -23,12 +27,16 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
+    Loop the locations to create CSS class names
+     */
     for (const location of this.locations) {
       /*
       No spaces in CSS class's, we use these css classes to assign a background image to the panel
        */
       this.locationCSS[location] = location.replace(/\s/g, '');
     }
+
     this.getWeatherLocations();
     /*
     or execute promise version
@@ -46,18 +54,21 @@ export class WeatherComponent implements OnInit {
         appid: environment.apiKey,
         units: 'metric'
       };
-
+      /*
+      We use the environment below so we can factor changes for different conditions.
+      say for instance we have a test API and a live API
+       */
       this.apiService.call(environment.weatherApi + '/weather', 'get', requestLocationParameters)
         .toPromise()
         .then((locationData: any) => {
           /*
           Build request parameters
            */
-          const requestWeatherParameters = {
+          const requestWeatherParameters: RequestWeatherParameters = {
             lon: locationData.coord.lon,
             lat: locationData.coord.lat,
             appid: environment.apiKey,
-            units: 'metric',
+            units: 'metric'
           };
           this.apiService.call(environment.weatherApi + '/onecall', 'get', requestWeatherParameters)
             .toPromise()
@@ -96,7 +107,7 @@ export class WeatherComponent implements OnInit {
    */
   getWeatherLocations(): void {
     for (const location of this.locations) {
-      const requestLocationParameters = {
+      const requestLocationParameters: RequestLocationParameters = {
         q: location,
         appid: environment.apiKey,
         units: 'metric'
@@ -105,7 +116,7 @@ export class WeatherComponent implements OnInit {
         /*
         Build request parameters
          */
-        const requestWeatherParameters = {
+        const requestWeatherParameters: RequestWeatherParameters = {
           lon: locationData.coord.lon,
           lat: locationData.coord.lat,
           appid: environment.apiKey,
@@ -133,10 +144,10 @@ export class WeatherComponent implements OnInit {
             icon: weatherData.current.weather[0].icon
           };
         }, (error) => {
-          alert('Whoops we hit an error calling onecall API');
+          console.log('Whoops we hit an error calling onecall API', error);
         });
       }, (error) => {
-        alert('Whoops we hit an error calling weather API');
+        console.error('Whoops we hit an error calling weather API', error);
       });
     }
   }

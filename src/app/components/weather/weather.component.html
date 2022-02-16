@@ -1,25 +1,35 @@
 <h1>
   Weather App
 </h1>
+<!-- Create a loop for the available locations-->
 <div *ngFor="let location of locations" [class]="locationCSS[location]" class="tempChart">
+  <!-- Do we have location data yet for this location, if now show the loading template-->
   <ng-container *ngIf="locationWeatherData[location]; else loading">
-  <heading>
-    <div class="headingText" [innerHTML]="location"></div>
-    <div class="weatherIcon">
-      <img src="assets/images/icons/{{ locationWeatherData[location].icon }}.png" class="weatherIcon" [alt]="locationWeatherData[location].main" [title]="locationWeatherData[location].main + ' - ' + locationWeatherData[location].description">
+    <heading>
+      <!-- Set the location heading -->
+      <div class="headingText" [innerHTML]="location"></div>
+      <!-- Add a weather condition icon-->
+      <div class="weatherIcon">
+        <img src="assets/images/icons/{{ locationWeatherData[location].icon }}.png" class="weatherIcon"
+             [alt]="locationWeatherData[location].main"
+             [title]="locationWeatherData[location].main + ' - ' + locationWeatherData[location].description">
+      </div>
+      <!-- Show the weather description-->
+      <div class="description" [innerHTML]="locationWeatherData[location].main"></div>
+    </heading>
+    <div class="content">
+      <!-- Show the required data for this location-->
+      <div class="main"
+           [innerHTML]="locationWeatherData[location].main + ' - ' + locationWeatherData[location].description">
+      </div>
+      <hr>
+      <div [innerHTML]="'<b>Temperature:</b> ' + locationWeatherData[location].temperature + '&#176;C'"></div>
+      <div [innerHTML]="'<b>Humidity:</b> ' + locationWeatherData[location].humidity + '%rh'"></div>
+      <div [innerHTML]="'<b>Chance of Rain:</b> ' + locationWeatherData[location].chanceOfRain + '%'"></div>
     </div>
-    <div class="description" [innerHTML]="locationWeatherData[location].main"></div>
-  </heading>
-  <div class="content">
-    <div class="main" [innerHTML]="locationWeatherData[location].main + ' - ' + locationWeatherData[location].description">
-    </div>
-    <hr>
-    <div [innerHTML]="'<b>Temperature:</b> ' + locationWeatherData[location].temperature + '&#176;C'"></div>
-    <div [innerHTML]="'<b>Humidity:</b> ' + locationWeatherData[location].humidity + '%rh'"></div>
-    <div [innerHTML]="'<b>Chance of Rain:</b> ' + locationWeatherData[location].chanceOfRain + '%'"></div>
-  </div>
   </ng-container>
 </div>
+<!--The loading template to show while the location is being requested from the API-->
 <ng-template #loading>
   <div class="loading">Loading...</div>
 </ng-template>
