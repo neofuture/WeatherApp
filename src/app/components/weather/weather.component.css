@@ -83,6 +83,7 @@ heading {
 .main {
   position: relative;
   font-size: 21px;
+  font-family: "vm_circular_light";
 }
 
 .weatherIcon {
@@ -142,7 +143,7 @@ b {
 @media only screen and (min-width: 800px) {
   .tempChart {
     width: calc(50% - 18px);
-    height: 236px;
+    height: 246px;
     display: inline-block;
   }
 }

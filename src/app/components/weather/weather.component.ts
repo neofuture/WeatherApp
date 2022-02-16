@@ -141,7 +141,7 @@ export class WeatherComponent implements OnInit {
            */
           this.locationWeatherData[location] = {
             temperature: parseInt(weatherData.current.temp, 10),
-            main: weatherData.current.weather[0].main,
+            main: this.capitalizeFirstLetter(weatherData.current.weather[0].main),
             humidity: weatherData.current.humidity,
             chanceOfRain: parseInt(String(basePop * 100), 10),
             description: this.capitalizeFirstLetter(weatherData.current.weather[0].description),
@@ -214,6 +214,12 @@ export class WeatherComponent implements OnInit {
   }
 
   capitalizeFirstLetter(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    const words = str.split(' ');
+
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    return words.join(' ');
   }
+
 }
